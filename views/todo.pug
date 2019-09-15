@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p #{content}
+  form(method="post" action="todo/confirm")
+    | 依頼者: 
+    input(type="text" name="client")
+    p
+    | タイトル: 
+    input(type="text" name="title")
+    p
+    | 内容: 
+    input(type="text" name="content")
+    p
+    | 期限: 
+    input(type="date" name="due")
+    p
+    input(type="submit" name="送信")
+
