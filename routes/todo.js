@@ -16,6 +16,7 @@ router.post('/confirm', (req, res, next) => {
   var description = req.body['description'];
   var due = req.body['due'];
   var data = {
+    content: '登録完了',
     Headtitle: '登録完了！',
     lead: '以下の内容で、登録しました。',
     client: '依頼者： ' + client,
