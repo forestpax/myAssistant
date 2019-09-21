@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1= title
+  p #{content}
+  form(method="post" action="client/confirm")
+    | 管理番号: 
+    input(type="text" name="number")
+    p
+    | 種類: 
+    input(type="text" name="kind")
+    p
+    | 名称: 
+    input(type="text" name="name")
+    p
+    | 内容: 
+    input(type="text" name="description")
+    p
+    | 郵便番号: 
+    input(type="text" name="zipcode")
+    p
+    | 住所: 
+    input(type="text" name="address")
+    p
+    | 代表: 
+    input(type="text" name="representative")
+    p
+    | 電話番号: 
+    input(type="text" name="telNumber")
+    p
+    | FAX番号: 
+    input(type="text" name="faxNumber")
+    p
+    | メールアドレス: 
+    input(type="text" name="mailAddress")
+    p
+    | 状態: 
+    input(type="text" name="status")
+    p
+    | 特記事項: 
+    input(type="text" name="tokki")
+    p
+    input(type="submit" name="送信")

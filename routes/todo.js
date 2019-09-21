@@ -15,8 +15,8 @@ router.post('/confirm', (req, res, next) => {
   var title = req.body['title'];
   var description = req.body['description'];
   var due = req.body['due'];
+  
   var data = {
-    content: '登録完了',
     Headtitle: '登録完了！',
     lead: '以下の内容で、登録しました。',
     client: '依頼者： ' + client,
@@ -26,10 +26,10 @@ router.post('/confirm', (req, res, next) => {
   }
   res.render('todoDone', data);
 
-  /*
-    var localhost = ''
+  
     var siteId = 2
-    var url = ngrok + "http://localhost/80/pleasanter/api/items/" + siteId + "/create"
+    var server = "http://localhost"
+    var url = server + "/pleasanter/api/items/" + siteId + "/create"
   
     var options = {
       uri: url,
@@ -48,10 +48,11 @@ router.post('/confirm', (req, res, next) => {
     console.log(title);
   
     request.post(options, function (error, response, body) {
-      console.log(body);
+      console.log(response);
+      
     });
   
-  */
+  
   
     var api_key = process.env.TRELLO_API_KEY;
     var api_token = process.env.TRELLO_API_TOKEN;
@@ -82,5 +83,10 @@ router.post('/confirm', (req, res, next) => {
   
 
 });
+
+
+process.on('uncaughtException', function (err) {
+  console.log(err);
+}); 
 
 module.exports = router;
