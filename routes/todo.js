@@ -89,8 +89,4 @@ process.on('uncaughtException', function (err) {
   console.log(err);
 }); 
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> a6b68c33053736b7f85c34154b67966e291407b6
