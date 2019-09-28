@@ -2,10 +2,13 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+var clientList = clientListMaker();
+
 router.get('/', function (req, res, next) {
   var data = {
     title: 'Todo',
-    content: 'Todoを登録します。'
+    content: 'Todoを登録します。',
+    clientList: clientList,
   }
   res.render('todo', data);
 });
@@ -84,13 +87,51 @@ router.post('/confirm', (req, res, next) => {
 
 });
 
+function clientListMaker() {
+
+  var request = require('request');
+
+  var server = 'http://7f512e8a.ngrok.io'
+  //var server = 'http://localhost'
+
+  var siteId = 1
+  var clientList = [];
+
+
+
+  var url = server + "/pleasanter/api/items/" + siteId + "/get"
+
+  var options = {
+      uri: url,
+      method: 'POST',
+      encoding: 'utf8',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      json: {
+          'ApiKey': process.env.PLEASANTER_API_KEY,
+          'Offset': 0,
+          'View': {
+
+          }
+      }
+  };
+
+
+  request.post(options, function (error, response, body) {
+      for (var i = 0; i < body.Response.Data.length; i++){
+          clientList.push(body.Response.Data[i].Title);
+      }
+  });
+
+  return clientList
+
+}
+
+
 
 process.on('uncaughtException', function (err) {
   console.log(err);
 }); 
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> a6b68c33053736b7f85c34154b67966e291407b6

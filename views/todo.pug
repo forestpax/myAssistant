@@ -4,8 +4,11 @@ block content
   h1= title
   p #{content}
   form(method="post" action="todo/confirm")
-    | 依頼者: 
-    input(type="text" name="client")
+    | 依頼者:
+    - var list = clientList
+    select(name="client")
+      each item in list
+        option #{item}
     p
     | タイトル: 
     input(type="text" name="title")

@@ -6,6 +6,7 @@ function refferRecord() {
     //var server = 'http://localhost'
 
     var siteId = 1
+    var clientList = [];
 
 
 
@@ -30,9 +31,11 @@ function refferRecord() {
 
     request.post(options, function (error, response, body) {
         for (var i = 0; i < body.Response.Data.length; i++){
-            console.log(body.Response.Data[i].Title);
+            clientList.push(body.Response.Data[i].Title);
         }
     });
+
+    return clientList
 
 }
 
